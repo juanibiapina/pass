@@ -6,6 +6,7 @@ load test_helper
   run pass-init
   assert_success
   [ -e "${PASS_STORE}" ]
+  [ -e "${PASS_STORE}/keyring.gpg" ]
 }
 
 @test "warns in case the store is already initialized" {

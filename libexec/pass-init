@@ -10,3 +10,4 @@ if [ -e "${PASS_STORE}" ]; then
 fi
 
 mkdir "${PASS_STORE}"
+touch "${PASS_STORE}/keyring.gpg"
