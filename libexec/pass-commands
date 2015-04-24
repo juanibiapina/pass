@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Summary: List all available pass commands
+# Usage: pass commands
+
+set -e
+
+basher _commands pass
