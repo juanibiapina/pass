@@ -18,6 +18,11 @@ abs_dirname() {
   cd "$cwd"
 }
 
+if [ -z "$PASS_STORE" ]; then
+  PASS_STORE="$HOME/.pass-store"
+fi
+export PASS_STORE
+
 bin_path="$(abs_dirname "$0")"
 export PATH="${bin_path}:${PATH}"
 
