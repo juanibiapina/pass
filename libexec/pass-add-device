@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Summary: Add a device
+#
+# Usage: pass add-device <public_key>
+#
+# The public key needs to be exported from the device you
+# want to add.
+
+set -e
+
+if [ "$#" -ne 1 ]; then
+  pass-help add-device
+  exit 1
+fi
+
+public_key="$1"
+
+if [ ! -e "$public_key" ]; then
+  echo "pass: public key file not found"
+  exit 1
+fi
+
+gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --import "${public_key}"

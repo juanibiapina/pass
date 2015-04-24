@@ -5,6 +5,8 @@ export PASS_TMP_BIN="${PASS_TEST_DIR}/bin"
 
 export PASS_STORE="${PASS_TEST_DIR}/store"
 
+export FIXTURES_DIR="${BATS_TEST_DIRNAME}/fixtures"
+
 export PATH="${BATS_TEST_DIRNAME}/libexec:$PATH"
 export PATH="${BATS_TEST_DIRNAME}/../libexec:$PATH"
 export PATH="${PASS_TMP_BIN}:$PATH"
