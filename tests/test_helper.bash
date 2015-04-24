@@ -17,3 +17,5 @@ mkdir -p "${PASS_TMP_BIN}"
 teardown() {
   rm -rf "$PASS_TEST_DIR"
 }
+
+load lib/mocks
