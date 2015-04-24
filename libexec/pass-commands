@@ -5,4 +5,9 @@
 
 set -e
 
+if [ "$#" -ne 0 ]; then
+  pass-help commands
+  exit 1
+fi
+
 basher _commands pass
