@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# Summary: Initializes the password store
+#
+# Usage: pass init
+
+if [ -e "${PASS_STORE}" ]; then
+  echo "pass: store already initialized"
+  exit 1
+fi
+
+mkdir "${PASS_STORE}"

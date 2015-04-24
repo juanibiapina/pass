@@ -145,7 +145,7 @@ if [ -z "$1" ] || [ "$1" == "pass" ]; then
   [ -z "$usage" ] || exit
   echo
   echo "Some useful pass commands are:"
-  print_summaries help
+  print_summaries help init
   echo
   echo "See 'pass help <command>' for information on a specific command."
 else
