@@ -20,4 +20,6 @@ if [ ! -e "$public_key" ]; then
   exit 1
 fi
 
+pass-_check-store
+
 gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --import "${public_key}"

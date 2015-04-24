@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ ! -e "${PASS_STORE}" ]; then
+  echo "pass: store not initialized"
+  exit 1
+fi
