@@ -4,4 +4,4 @@ set -e
 
 pass-_check-store
 
-pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^pub' | cut -d ':' -f 10 | cut -d '(' -f 2 | cut -d ')' -f 1
+pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^pub' | cut -d ':' -f 10 | cut -d '(' -f 2 | cut -d ')' -f 1 | cut -d '#' -f 2

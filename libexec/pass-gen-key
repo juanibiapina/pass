@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo -n "User name: "
+read name
+
+echo -n "E-mail: "
+read email
+
+pass-_gpg --batch --gen-key <<KEYDATA
+Key-Type: RSA
+Key-Length: 2048
+Name-Real: ${name}
+Name-Comment: pass#$(hostname -s)
+Name-Email: ${email}
+Expire-Date: 0
+
+%ask-passphrase
+
+%commit
+KEYDATA

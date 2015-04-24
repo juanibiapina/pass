@@ -23,5 +23,5 @@ load test_helper
   assert_success
 
   key_name="$(gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^pub' | cut -d ':' -f 10)"
-  [ "$key_name" = "Dummy User (Dummy Device) <dummy@example.com>" ]
+  [ "$key_name" = "Dummy User (pass#Dummy Device) <dummy@example.com>" ]
 }
