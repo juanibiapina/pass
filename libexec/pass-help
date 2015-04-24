@@ -89,7 +89,7 @@ print_summary() {
   eval "$(documentation_for "$command")"
 
   if [ -n "$summary" ]; then
-    printf "   %-9s   %s\n" "$command" "$summary"
+    printf "   %-10s   %s\n" "$command" "$summary"
   fi
 }
 
@@ -145,7 +145,7 @@ if [ -z "$1" ] || [ "$1" == "pass" ]; then
   [ -z "$usage" ] || exit
   echo
   echo "Some useful pass commands are:"
-  print_summaries help init
+  print_summaries help commands init add-device list-devices
   echo
   echo "See 'pass help <command>' for information on a specific command."
 else

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Summary: Initializes the password store
+# Summary: Initialize the password store
 #
 # Usage: pass init
 
