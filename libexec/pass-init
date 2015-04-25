@@ -9,7 +9,7 @@ if [ -e "${PASS_STORE}" ]; then
   exit 1
 fi
 
-mkdir "${PASS_STORE}"
+mkdir -p "${PASS_STORE}/passwords"
 touch "${PASS_STORE}/keyring.gpg"
 
 echo "pass: store initialized at ${PASS_STORE}"
