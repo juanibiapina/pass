@@ -5,9 +5,11 @@
 # Usage: pass init
 
 if [ -e "${PASS_STORE}" ]; then
-  echo "pass: store already initialized"
+  echo "pass: store already initialized at ${PASS_STORE}"
   exit 1
 fi
 
 mkdir "${PASS_STORE}"
 touch "${PASS_STORE}/keyring.gpg"
+
+echo "pass: store initialized at ${PASS_STORE}"

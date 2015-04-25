@@ -4,7 +4,7 @@ load test_helper
 
 @test "initializes the store" {
   run pass-init
-  assert_success
+  assert_success "pass: store initialized at ${PASS_STORE}"
   [ -e "${PASS_STORE}" ]
   [ -e "${PASS_STORE}/keyring.gpg" ]
 }
@@ -14,5 +14,5 @@ load test_helper
 
   run pass-init
 
-  assert_failure "pass: store already initialized"
+  assert_failure "pass: store already initialized at ${PASS_STORE}"
 }
