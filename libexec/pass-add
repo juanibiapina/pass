@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#
+# Summary: Add a password to the store
+#
+# Usage: pass add <domain>
+
+domain="$1"
+
+if [ -z "$domain" ]; then
+  pass-help add
+  exit 1
+fi
+
+pass-_check-store
+
+read -r -p "Password: " -s password
+
+devices="$(pass-list-devices)"
+
+recipients=()
+for device in $devices; do
+  recipients+=( "-r" "pass#${device}" )
+done
+
+pass-_gpg -e "${recipients[@]}" --trust-model always -o "${PASS_STORE}/passwords/$domain" <<<"$password"
