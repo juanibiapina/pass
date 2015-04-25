@@ -2,6 +2,7 @@ load lib/assertions
 
 export PASS_TEST_DIR="${BATS_TMPDIR}/pass"
 export PASS_GPG_HOME_DIR="${PASS_TEST_DIR}/gpg_home"
+export PASS_CWD="${PASS_TEST_DIR}/cwd"
 export PASS_TMP_BIN="${PASS_TEST_DIR}/bin"
 
 export PASS_STORE="${PASS_TEST_DIR}/store"
@@ -15,6 +16,11 @@ export PATH="${PASS_TMP_BIN}:$PATH"
 mkdir -p "${PASS_TEST_DIR}"
 mkdir -p "${PASS_TMP_BIN}"
 mkdir -p "${PASS_GPG_HOME_DIR}"
+mkdir -p "${PASS_CWD}"
+
+setup() {
+  cd "${PASS_CWD}"
+}
 
 teardown() {
   rm -rf "$PASS_TEST_DIR"

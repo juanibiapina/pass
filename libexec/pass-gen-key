@@ -18,3 +18,9 @@ Expire-Date: 0
 
 %commit
 KEYDATA
+
+echo
+echo "Saving public key to $(hostname -s)_key.gpg"
+echo
+
+pass-_gpg --export --armor "(pass#$(hostname -s)) <${email}>" > "$(hostname -s)_key.gpg"
