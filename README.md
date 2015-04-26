@@ -19,10 +19,6 @@ Since this is still early development, the store format will probably change in 
 $ basher install juanibiapina/pass
 ```
 
-### Manual
-
-Clone the repository and add the `bin` folder to your PATH
-
 # Local usage
 
 1. Initialize the store:
