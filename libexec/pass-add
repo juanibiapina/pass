@@ -22,4 +22,6 @@ for device in $devices; do
   recipients+=( "-r" "pass#${device}" )
 done
 
+mkdir -p "${PASS_STORE}/passwords/$(dirname "$domain")"
+
 pass-_gpg -e "${recipients[@]}" --trust-model always -o "${PASS_STORE}/passwords/$domain" <<<"$password"
