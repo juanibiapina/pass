@@ -6,4 +6,6 @@
 
 set -e
 
+pass-_check-store
+
 tree -C -l --noreport "${PASS_STORE}/passwords" | tail -n +2
