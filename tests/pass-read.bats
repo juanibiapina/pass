@@ -16,9 +16,7 @@ User Name
 user@email.com
 EOF
   pass-add-device "$(hostname -s)_key.gpg"
-  pass-add site.com <<PASSWORD
-secret
-PASSWORD
+  pass-add site.com <<<secret
 
   run pass-read site.com
 
@@ -32,9 +30,7 @@ User Name
 user@email.com
 EOF
   pass-add-device "$(hostname -s)_key.gpg"
-  pass-add category/site.com <<PASSWORD
-secret
-PASSWORD
+  pass-add category/site.com <<<secret
 
   run pass-read category/site.com
 

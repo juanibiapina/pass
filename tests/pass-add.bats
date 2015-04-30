@@ -17,9 +17,7 @@ user@email.com
 EOF
   pass-add-device "$(hostname -s)_key.gpg"
 
-  run pass-add site.com <<PASSWORD
-secret
-PASSWORD
+  run pass-add site.com <<<secret
 
   assert_success
   [ -e "${PASS_STORE}/passwords/site.com" ]
@@ -34,9 +32,7 @@ user@email.com
 EOF
   pass-add-device "$(hostname -s)_key.gpg"
 
-  run pass-add category/site.com <<PASSWORD
-secret
-PASSWORD
+  run pass-add category/site.com <<<secret
 
   assert_success
   [ -e "${PASS_STORE}/passwords/category/site.com" ]
