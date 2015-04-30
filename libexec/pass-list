@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Summary: Lists all stored passwords
+#
+# Usage: pass list
+
+set -e
+
+tree -C -l --noreport "${PASS_STORE}/passwords" | tail -n +2
