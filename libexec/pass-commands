@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # Summary: List all available pass commands
+#
 # Usage: pass commands
 
 set -e
@@ -10,4 +11,4 @@ if [ "$#" -ne 0 ]; then
   exit 1
 fi
 
-basher _commands pass
+lasher _commands pass
