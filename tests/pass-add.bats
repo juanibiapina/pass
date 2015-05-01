@@ -10,12 +10,7 @@ load test_helper
 }
 
 @test "adds an encrypted password to the store" {
-  pass-init
-  pass-gen-key <<EOF
-User Name
-user@email.com
-EOF
-  pass-add-device "$(hostname -s)_key.gpg"
+  init_store
 
   run pass-add site.com <<<secret
 
@@ -25,12 +20,7 @@ EOF
 }
 
 @test "adds an encrypted password with a category" {
-  pass-init
-  pass-gen-key <<EOF
-User Name
-user@email.com
-EOF
-  pass-add-device "$(hostname -s)_key.gpg"
+  init_store
 
   run pass-add category/site.com <<<secret
 
