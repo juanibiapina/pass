@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# Summary: Remove a password from the store
+#
+# Usage: pass remove <domain>
+
+set -e
+
+domain="$1"
+
+if [ -z "$domain" ]; then
+  pass-help remove
+  exit 1
+fi
+
+if [ ! -e "${PASS_STORE}/passwords/$domain" ]; then
+  echo "pass: password not found"
+  exit 1
+fi
+
+rm -f "${PASS_STORE}/passwords/$domain"
+rmdir -p "${PASS_STORE}/passwords/${domain%/*}" 2>/dev/null || true
+mkdir -p "${PASS_STORE}/passwords"
