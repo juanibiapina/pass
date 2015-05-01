@@ -10,6 +10,7 @@ Since this is still early development, the store format will probably change in 
 
 - gnupg
 - tree
+- pwgen
 - [lasher](https://github.com/basherpm/lasher)
 - [basher](https://github.com/basherpm/basher)
 
