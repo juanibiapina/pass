@@ -27,3 +27,4 @@ teardown() {
 }
 
 load lib/mocks
+load lib/pass

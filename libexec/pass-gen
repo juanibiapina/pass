@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Summary: Generate random password
+#
+# Usage: pass gen <domain>
+#
+# Generate a random secure password for a domain and save it
+# to the store
+
+domain="$1"
+
+if [ -z "$domain" ]; then
+  pass-help gen
+  exit 1
+fi
+
+pwgen -s -y 15 1 | pass-add "$domain"
