@@ -25,6 +25,8 @@ $ brew install juanibiapina/pass/pass
 
 ### Using [basher](https://github.com/basherpm/basher)
 
+Make sure you get `tree` and `pwgen` from whatever package manager your platform provides. `gnupg` should already be available. Then run:
+
 ```
 $ basher install juanibiapina/pass
 ```
