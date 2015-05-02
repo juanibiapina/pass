@@ -15,6 +15,14 @@ Since this is still early development, the store format will probably change in 
 
 # Installation
 
+
+### Using [brew](http://brew.sh/)
+
+~~~ sh
+$ brew tap juanibiapina/pass
+$ brew install juanibiapina/pass/pass
+~~~
+
 ### Using [basher](https://github.com/basherpm/basher)
 
 ```
