@@ -18,7 +18,7 @@ Since this is still early development, the store format will probably change in 
 
 ### Using [brew](http://brew.sh/)
 
-~~~ sh
+~~~sh
 $ brew tap juanibiapina/pass
 $ brew install juanibiapina/pass/pass
 ~~~
@@ -27,42 +27,42 @@ $ brew install juanibiapina/pass/pass
 
 Make sure you get `tree` and `pwgen` from whatever package manager your platform provides. `gnupg` should already be available. Then run:
 
-```
+~~~sh
 $ basher install juanibiapina/pass
-```
+~~~
 
 # Local usage
 
 1. Initialize the store:
 
-  ```sh
+  ~~~sh
   $ pass init
-  ```
+  ~~~
 
 2. Generate a key pair for this device
 
-  ```sh
+  ~~~sh
   $ pass gen-key
-  ```
+  ~~~
 
   This will create a public key file on the current directory.
 
 3. Add the public key to the store
 
-  ```sh
+  ~~~sh
   $ pass add-device <hostname_key.gpg>
-  ```
+  ~~~
 
   Where \<hostname_key.gpg\> is the public key generated on the previous step.
 
 4. Add a password:
 
-  ```sh
+  ~~~sh
   $ pass add site.com
-  ```
+  ~~~
 
 5. Retrieve a password:
 
-  ```sh
+  ~~~sh
   $ pass read site.com
-  ```
+  ~~~
