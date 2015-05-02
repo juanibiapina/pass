@@ -15,7 +15,7 @@ pass-_check-store
 
 read -r -p "Password: " -s password
 
-devices="$(pass-list-devices)"
+devices="$(pass-list-devices --porcelain)"
 
 recipients=()
 for device in $devices; do

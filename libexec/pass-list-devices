@@ -1,7 +1,39 @@
 #!/usr/bin/env bash
+#
+# Summary: List devices registered on the store
+#
+# Usage: pass list-devices [--porcelain]
+#
+# List all devices that can read passwords from the store.
+#
+# The --porcelain should be used when piping the output to scripts.
 
 set -e
 
 pass-_check-store
 
-pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^pub' | cut -d ':' -f 10 | cut -d '(' -f 2 | cut -d ')' -f 1 | cut -d '#' -f 2
+opt="$1"
+
+porcelain=false
+if [ -n "$opt" ]; then
+  if [ "$opt" = "--porcelain" ]; then
+    porcelain=true
+  fi
+fi
+
+devices="$(pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^pub' | cut -d ':' -f 10 | cut -d '(' -f 2 | cut -d ')' -f 1 | cut -d '#' -f 2)"
+
+if [ "$porcelain" = true ]; then
+  echo "$devices"
+  exit
+fi
+
+current_device="$(hostname -s)"
+
+while read device; do
+  if [ "$device" = "$current_device" ]; then
+    printf "%-2s%s\n" "*" "$device"
+  else
+    printf "%-2s%s\n" "" "$device"
+  fi
+done <<< "$devices"
