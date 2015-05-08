@@ -4,7 +4,7 @@ load test_helper
 
 @test "lists passwords with categories" {
   init_store
-  pass-add category1/site.com <<INPUT
+  pass-add category1/site1.com <<INPUT
 secret
 INPUT
   pass-add category1/site2.com <<INPUT
@@ -19,8 +19,8 @@ INPUT
   assert_success
   assert_output <<OUTPUT
 ├── category1
-│   ├── site2.com
-│   └── site.com
+│   ├── site1.com
+│   └── site2.com
 └── category2
     └── site3.com
 OUTPUT
@@ -28,7 +28,7 @@ OUTPUT
 
 @test "lists passwords with paths" {
   init_store
-  pass-add category1/site.com <<INPUT
+  pass-add category1/site1.com <<INPUT
 secret
 INPUT
   pass-add category1/site2.com <<INPUT
@@ -42,7 +42,7 @@ INPUT
 
   assert_success
   assert_output <<OUTPUT
-category1/site.com
+category1/site1.com
 category1/site2.com
 category2/site3.com
 OUTPUT
