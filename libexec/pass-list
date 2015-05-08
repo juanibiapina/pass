@@ -20,7 +20,7 @@ fi
 if [ "$porcelain" = true ]; then
   (
     cd "${PASS_STORE}/passwords"
-    find -type f -printf '%P\n'
+    find * -type f
   )
   exit
 fi
