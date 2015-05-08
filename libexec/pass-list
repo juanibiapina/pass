@@ -8,4 +8,22 @@ set -e
 
 pass-_check-store
 
-tree -C -l --noreport "${PASS_STORE}/passwords" | tail -n +2
+opt="$1"
+
+porcelain=false
+if [ -n "$opt" ]; then
+  if [ "$opt" = "--porcelain" ]; then
+    porcelain=true
+  fi
+fi
+
+if [ "$porcelain" = true ]; then
+  (
+    cd "${PASS_STORE}/passwords"
+    find * -type f
+  )
+  exit
+fi
+
+tree -l --noreport "${PASS_STORE}/passwords" | tail -n +2
+
