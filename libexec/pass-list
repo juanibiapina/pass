@@ -20,7 +20,7 @@ fi
 if [ "$porcelain" = true ]; then
   (
     cd "${PASS_STORE}/passwords"
-    find * -type f
+    find . -type f | sed "s|^\./||"
   )
   exit
 fi

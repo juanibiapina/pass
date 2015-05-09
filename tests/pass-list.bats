@@ -47,3 +47,11 @@ category1/site2.com
 category2/site3.com
 OUTPUT
 }
+
+@test "doesn't fail to list passwords even if the list is empty" {
+  init_store
+
+  run pass-list --porcelain
+
+  assert_success ""
+}
