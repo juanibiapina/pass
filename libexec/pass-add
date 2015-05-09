@@ -4,6 +4,8 @@
 #
 # Usage: pass add [-f] <domain>
 
+set -e
+
 force=false
 
 while getopts ":f" opt; do
