@@ -2,7 +2,23 @@
 #
 # Summary: Add a password to the store
 #
-# Usage: pass add <domain>
+# Usage: pass add [-f] <domain>
+
+force=false
+
+while getopts ":f" opt; do
+  case $opt in
+    f)
+      force=true
+      ;;
+    \?)
+      echo "pass: invalid option"
+      exit 1
+      ;;
+  esac
+done
+
+shift $(( OPTIND-1 ))
 
 domain="$1"
 
@@ -12,6 +28,15 @@ if [ -z "$domain" ]; then
 fi
 
 pass-_check-store
+
+if [ -e "${PASS_STORE}/passwords/$domain" ]; then
+  if [ "$force" = true ]; then
+    rm "${PASS_STORE}/passwords/$domain"
+  else
+    echo "pass: password already exists"
+    exit 1
+  fi
+fi
 
 read -r -p "Password: " -s password
 
