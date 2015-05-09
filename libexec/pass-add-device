@@ -23,3 +23,5 @@ fi
 pass-_check-store
 
 pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --import "${public_key}"
+
+pass-regenerate-store
