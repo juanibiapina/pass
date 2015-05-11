@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+open "https://www.dropbox.com/1/oauth2/authorize?client_id=pq3chdkkr4fpwve&response_type=code"
+
+read -p "Enter dropbox authorization code: " code
+
+response="$(curl -s "https://api.dropbox.com/1/oauth2/token?code=${code}&grant_type=authorization_code" --data "client_id=pq3chdkkr4fpwve&client_secret=w2vxoy5aavgwyse")"
+
+if [[ "$response" =~ access_token\":\ \"([^\"]*)\" ]]; then
+  token="${BASH_REMATCH[1]}"
+else
+  echo "pass: not authorized"
+  exit 1
+fi
+
+echo "$token" > ~/.pass-token
+echo "Dropbox authorized"
