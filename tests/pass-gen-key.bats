@@ -3,8 +3,6 @@
 load test_helper
 
 @test "generates a private key for this device" {
-  mock_gpg_home
-
   run pass-gen-key <<EOF
 User Name
 user@email.com
@@ -16,8 +14,6 @@ EOF
 }
 
 @test "generates a public key for this device" {
-  mock_gpg_home
-
   run pass-gen-key <<EOF
 User Name
 user@email.com
@@ -29,8 +25,6 @@ EOF
 }
 
 @test "prints the public key to stdout" {
-  mock_gpg_home
-
   run pass-gen-key <<EOF
 User Name
 user@email.com

@@ -16,10 +16,12 @@ export PATH="${PASS_TMP_BIN}:$PATH"
 mkdir -p "${PASS_TEST_DIR}"
 mkdir -p "${PASS_TMP_BIN}"
 mkdir -p "${PASS_GPG_HOME_DIR}"
+chmod 700 "${PASS_GPG_HOME_DIR}"
 mkdir -p "${PASS_CWD}"
 
 setup() {
   cd "${PASS_CWD}"
+  mock_gpg_home
 }
 
 teardown() {
