@@ -51,4 +51,4 @@ done
 
 mkdir -p "${PASS_STORE}/passwords/$(dirname "$domain")"
 
-pass-_gpg -e "${recipients[@]}" --trust-model always -o "${PASS_STORE}/passwords/$domain" <<<"$password"
+pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" -e "${recipients[@]}" --trust-model always -o "${PASS_STORE}/passwords/$domain" <<<"$password"
