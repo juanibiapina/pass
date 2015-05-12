@@ -31,6 +31,8 @@ fi
 
 pass-_check-store
 
+read -r -p "Password: " -s password
+
 if [ -e "${PASS_STORE}/passwords/$domain" ]; then
   if [ "$force" = true ]; then
     rm "${PASS_STORE}/passwords/$domain"
@@ -39,8 +41,6 @@ if [ -e "${PASS_STORE}/passwords/$domain" ]; then
     exit 1
   fi
 fi
-
-read -r -p "Password: " -s password
 
 devices="$(pass-list-devices --porcelain)"
 
