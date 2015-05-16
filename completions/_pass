@@ -1,0 +1,3 @@
+#compdef pass
+
+compadd $(pass commands)
