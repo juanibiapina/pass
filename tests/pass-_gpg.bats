@@ -7,5 +7,5 @@ load test_helper
 
   run pass-_gpg arg1 arg2
 
-  assert_success "gpg --quiet arg1 arg2"
+  assert_success "gpg --quiet --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" arg1 arg2"
 }

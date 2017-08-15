@@ -42,13 +42,8 @@ if [ -e "${PASS_STORE}/passwords/$domain" ]; then
   fi
 fi
 
-devices="$(pass-list-devices --porcelain)"
-
-recipients=()
-for device in $devices; do
-  recipients+=( "-r" "pass#${device}" )
-done
+name="$(pass-_gpg --list-keys --with-colons | grep '^uid' | cut -d ':' -f 10)"
 
 mkdir -p "${PASS_STORE}/passwords/$(dirname "$domain")"
 
-pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" -e "${recipients[@]}" --trust-model always -o "${PASS_STORE}/passwords/$domain" <<<"$password"
+pass-_gpg -e -r "${name}" --trust-model always -o "${PASS_STORE}/passwords/$domain" <<<"$password"

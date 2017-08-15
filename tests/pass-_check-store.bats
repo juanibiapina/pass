@@ -9,7 +9,10 @@ load test_helper
 }
 
 @test "doesn't fail if store is initialized" {
-  pass-init
+  pass-init <<EOF
+User Name
+user@email.com
+EOF
 
   run pass-_check-store
 
