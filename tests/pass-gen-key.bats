@@ -9,7 +9,7 @@ user@email.com
 EOF
 
   assert_success
-  key_name="$(pass-_gpg --with-colons --list-secret-keys | grep '^sec' | cut -d ':' -f 10)"
+  key_name="$(pass-_gpg --with-colons --list-secret-keys | grep '^uid' | cut -d ':' -f 10)"
   [ "$key_name" = "User Name (pass#$(hostname -s)) <user@email.com>" ]
 }
 
@@ -20,7 +20,7 @@ user@email.com
 EOF
 
   assert_success
-  key_name="$(pass-_gpg --with-colons --list-public-keys | grep '^pub' | cut -d ':' -f 10)"
+  key_name="$(pass-_gpg --with-colons --list-public-keys | grep '^uid' | cut -d ':' -f 10)"
   [ "$key_name" = "User Name (pass#$(hostname -s)) <user@email.com>" ]
 }
 

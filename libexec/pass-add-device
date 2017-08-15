@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+#
 # Summary: Add a device
 #
-# Usage: pass add-device <public_key>
+# Usage: pass add-device <public_key_file>
 #
 # The public key needs to be exported from the device you
 # want to add.

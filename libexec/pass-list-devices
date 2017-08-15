@@ -21,7 +21,7 @@ if [ -n "$opt" ]; then
   fi
 fi
 
-devices="$(pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^pub' | cut -d ':' -f 10 | cut -d '(' -f 2 | cut -d ')' -f 1 | cut -d '#' -f 2)"
+devices="$(pass-_gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^uid' | cut -d ':' -f 10 | cut -d '(' -f 2 | cut -d ')' -f 1 | cut -d '#' -f 2)"
 
 if [ "$porcelain" = true ]; then
   echo "$devices"

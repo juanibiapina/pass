@@ -8,13 +8,14 @@ read name
 echo -n "E-mail: "
 read email
 
-pass-_gpg --batch --gen-key <<KEYDATA
+pass-_gpg --gen-key --batch <<KEYDATA
 Key-Type: RSA
 Key-Length: 2048
 Name-Real: ${name}
 Name-Comment: pass#$(hostname -s)
 Name-Email: ${email}
 Expire-Date: 0
+%no-protection
 
 %commit
 KEYDATA

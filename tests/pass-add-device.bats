@@ -6,7 +6,7 @@ load test_helper
   run pass-add-device
 
   assert_failure
-  assert_line "Usage: pass add-device <public_key>"
+  assert_line "Usage: pass add-device <public_key_file>"
 }
 
 @test "with an invalid file, displays error" {
@@ -22,6 +22,6 @@ load test_helper
 
   assert_success
 
-  key_name="$(gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^pub' | cut -d ':' -f 10)"
+  key_name="$(gpg --no-default-keyring --keyring "${PASS_STORE}/keyring.gpg" --with-colons --list-keys | grep '^uid' | cut -d ':' -f 10)"
   [ "$key_name" = "Dummy User (pass#Dummy Device) <dummy@example.com>" ]
 }
