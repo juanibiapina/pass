@@ -2,16 +2,8 @@
 #
 # Summary: Generate random password
 #
-# Usage: pass gen <domain>
+# Usage: pass gen
 #
-# Generate a random secure password for a domain and save it
-# to the store
+# Generate a random secure password
 
-domain="$1"
-
-if [ -z "$domain" ]; then
-  pass-help gen
-  exit 1
-fi
-
-pwgen -s -y 15 1 | pass-add "$domain"
+pwgen -s -y 15 1
