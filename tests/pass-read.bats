@@ -18,6 +18,19 @@ load test_helper
   assert_success "secret"
 }
 
+@test "reads a multiline password from the store" {
+  init_store
+  pass-add -m site.com <<EOF
+multi
+line
+EOF
+
+  run pass-read site.com
+
+  assert_success "multi
+line"
+}
+
 @test "reads a password with a category" {
   init_store
   pass-add category/site.com <<<secret

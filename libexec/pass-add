@@ -2,14 +2,17 @@
 #
 # Summary: Add a password to the store
 #
-# Usage: pass add [-f] <domain>
+# Usage: pass add [-m] [-f] <path>
 
 set -e
 
 force=false
 
-while getopts ":f" opt; do
+while getopts ":mf" opt; do
   case $opt in
+    m)
+      multiline=true
+      ;;
     f)
       force=true
       ;;
@@ -22,20 +25,24 @@ done
 
 shift $(( OPTIND-1 ))
 
-domain="$1"
+path="$1"
 
-if [ -z "$domain" ]; then
+if [ -z "$path" ]; then
   pass-help add
   exit 1
 fi
 
 pass-_check-store
 
-read -r -p "Password: " -s password
+if [ "$multiline" = true ]; then
+  password=$(</dev/stdin)
+else
+  read -r -p "Password: " -s password
+fi
 
-if [ -e "${PASS_STORE}/passwords/$domain" ]; then
+if [ -e "${PASS_STORE}/passwords/$path" ]; then
   if [ "$force" = true ]; then
-    rm "${PASS_STORE}/passwords/$domain"
+    rm "${PASS_STORE}/passwords/$path"
   else
     echo "pass: password already exists"
     exit 1
@@ -44,6 +51,6 @@ fi
 
 name="$(pass-_gpg --list-keys --with-colons | grep '^uid' | cut -d ':' -f 10)"
 
-mkdir -p "${PASS_STORE}/passwords/$(dirname "$domain")"
+mkdir -p "${PASS_STORE}/passwords/$(dirname "$path")"
 
-pass-_gpg -e -r "${name}" --trust-model always -o "${PASS_STORE}/passwords/$domain" <<<"$password"
+pass-_gpg -e -r "${name}" --trust-model always -o "${PASS_STORE}/passwords/$path" <<<"$password"

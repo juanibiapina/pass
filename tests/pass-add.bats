@@ -6,7 +6,7 @@ load test_helper
   run pass-add
 
   assert_failure
-  assert_line "Usage: pass add [-f] <domain>"
+  assert_line "Usage: pass add [-m] [-f] <path>"
 }
 
 @test "adds an encrypted password to the store" {
@@ -15,8 +15,22 @@ load test_helper
   run pass-add site.com <<<secret
 
   assert_success
+
   [ -e "${PASS_STORE}/passwords/site.com" ]
   [ "$(cat "${PASS_STORE}/passwords/site.com")" != "secret" ]
+}
+
+@test "adds an encrypted multiline password to the store" {
+  init_store
+
+  run pass-add -m site.com <<EOF
+multi
+line
+EOF
+
+  assert_success
+
+  [ -e "${PASS_STORE}/passwords/site.com" ]
 }
 
 @test "adds an encrypted password with a category" {

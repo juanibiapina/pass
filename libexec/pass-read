@@ -13,4 +13,4 @@ fi
 
 pass-_check-store
 
-pass-_gpg -d "${PASS_STORE}/passwords/$domain" | head -n 1
+pass-_gpg -d "${PASS_STORE}/passwords/$domain"
