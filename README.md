@@ -1,3 +1,5 @@
+DEPRECATED: For now I'm using the other pass: https://www.passwordstore.org/
+
 # pass
 
 Pass is a simple password manager that works on the terminal.
